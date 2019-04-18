@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		8D57E07C2268C95B004D9C16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E07B2268C95B004D9C16 /* AppDelegate.swift */; };
-		8D57E07E2268C95B004D9C16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E07D2268C95B004D9C16 /* ViewController.swift */; };
 		8D57E0812268C95B004D9C16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D57E07F2268C95B004D9C16 /* Main.storyboard */; };
 		8D57E0842268C95B004D9C16 /* SmartBoy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0822268C95B004D9C16 /* SmartBoy.xcdatamodeld */; };
 		8D57E0862268C95C004D9C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D57E0852268C95C004D9C16 /* Assets.xcassets */; };
 		8D57E0892268C95C004D9C16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D57E0872268C95C004D9C16 /* LaunchScreen.storyboard */; };
 		8D57E0942268C95C004D9C16 /* SmartBoyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0932268C95C004D9C16 /* SmartBoyTests.swift */; };
 		8D57E09F2268C95C004D9C16 /* SmartBoyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E09E2268C95C004D9C16 /* SmartBoyUITests.swift */; };
+		8D57E0AE2268D27A004D9C16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0AD2268D27A004D9C16 /* LoginViewController.swift */; };
+		8D57E0AF2268D27A004D9C16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0AD2268D27A004D9C16 /* LoginViewController.swift */; };
+		8D57E0B22268D39D004D9C16 /* SmartBoyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0B12268D39D004D9C16 /* SmartBoyViewController.swift */; };
+		8D57E0B32268D39D004D9C16 /* SmartBoyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0B12268D39D004D9C16 /* SmartBoyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,6 @@
 /* Begin PBXFileReference section */
 		8D57E0782268C95B004D9C16 /* SmartBoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartBoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D57E07B2268C95B004D9C16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8D57E07D2268C95B004D9C16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8D57E0802268C95B004D9C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D57E0832268C95B004D9C16 /* SmartBoy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartBoy.xcdatamodel; sourceTree = "<group>"; };
 		8D57E0852268C95C004D9C16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		8D57E09A2268C95C004D9C16 /* SmartBoyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartBoyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D57E09E2268C95C004D9C16 /* SmartBoyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartBoyUITests.swift; sourceTree = "<group>"; };
 		8D57E0A02268C95C004D9C16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D57E0AD2268D27A004D9C16 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8D57E0B12268D39D004D9C16 /* SmartBoyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartBoyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +103,9 @@
 		8D57E07A2268C95B004D9C16 /* SmartBoy */ = {
 			isa = PBXGroup;
 			children = (
+				8D57E0B02268D2F3004D9C16 /* SmartBoyViewController */,
+				8D57E0AC2268CCF0004D9C16 /* Login */,
 				8D57E07B2268C95B004D9C16 /* AppDelegate.swift */,
-				8D57E07D2268C95B004D9C16 /* ViewController.swift */,
 				8D57E07F2268C95B004D9C16 /* Main.storyboard */,
 				8D57E0852268C95C004D9C16 /* Assets.xcassets */,
 				8D57E0872268C95C004D9C16 /* LaunchScreen.storyboard */,
@@ -126,6 +131,22 @@
 				8D57E0A02268C95C004D9C16 /* Info.plist */,
 			);
 			path = SmartBoyUITests;
+			sourceTree = "<group>";
+		};
+		8D57E0AC2268CCF0004D9C16 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8D57E0AD2268D27A004D9C16 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		8D57E0B02268D2F3004D9C16 /* SmartBoyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8D57E0B12268D39D004D9C16 /* SmartBoyViewController.swift */,
+			);
+			path = SmartBoyViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +280,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D57E07E2268C95B004D9C16 /* ViewController.swift in Sources */,
+				8D57E0AE2268D27A004D9C16 /* LoginViewController.swift in Sources */,
 				8D57E0842268C95B004D9C16 /* SmartBoy.xcdatamodeld in Sources */,
 				8D57E07C2268C95B004D9C16 /* AppDelegate.swift in Sources */,
+				8D57E0B22268D39D004D9C16 /* SmartBoyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +291,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D57E0AF2268D27A004D9C16 /* LoginViewController.swift in Sources */,
 				8D57E0942268C95C004D9C16 /* SmartBoyTests.swift in Sources */,
+				8D57E0B32268D39D004D9C16 /* SmartBoyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
