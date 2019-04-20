@@ -14,3 +14,13 @@ extension CALayer {
         self.borderWidth = 2.0
     }
 }
+
+extension UIView {
+    func addUnderLine() {
+        self.layoutIfNeeded()
+        let layer = CALayer()
+        layer.frame = CGRect(x: 0, y: self.bounds.height - 0.5, width: self.bounds.width, height: 0.5)
+        layer.backgroundColor = UIColor.lightGray.cgColor
+        self.layer.addSublayer(layer)
+    }
+}

@@ -47,12 +47,16 @@ class SmartBoyFeedCell: UICollectionViewCell {
 //        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: [
 //                                                                                                                                                                                                                                    ]))
         
+        section3.addUnderLine()
+        section4.addUnderLine()
     }
     
     required init?(coder aDecoder: NSCoder) {
         
         fatalError("init(coder:) has not been implemented")
     }
+    
+  
     
     let section1: UIView = {
         
@@ -125,11 +129,21 @@ class SmartBoyFeedCell: UICollectionViewCell {
     }()
     
     let section3: UIView = {
+        
+        
         let view = UIView()
        //view.layer.addBorder(with: UIColor.green)
         view.translatesAutoresizingMaskIntoConstraints = false
+        //Like button
+        let likeButton = UIButton()
+        likeButton.translatesAutoresizingMaskIntoConstraints = false
+        likeButton.setImage(UIImage(named: "like"), for: .normal)
+        view.addSubview(likeButton)
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[likeButton(30)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["likeButton":likeButton]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[likeButton(30)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["likeButton":likeButton]))
         return view
     }()
     
     
 }
+

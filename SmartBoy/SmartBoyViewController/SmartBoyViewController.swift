@@ -65,26 +65,18 @@ extension SmartBoyViewController: UICollectionViewDelegate, UICollectionViewData
         switch indexPath.section {
         case Section.cameraView.rawValue:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath)
-            cell.layer.borderColor = UIColor.yellow.cgColor
-            cell.layer.borderWidth = 3.0
             return cell
             
         case Section.feed.rawValue:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath) as! SmartBoyFeed
-            cell.layer.borderColor = UIColor.yellow.cgColor
-            cell.layer.borderWidth = 3.0
             return cell
             
         case Section.chats.rawValue:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath)
-            cell.layer.borderColor = UIColor.yellow.cgColor
-            cell.layer.borderWidth = 3.0
             return cell
             
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath)
-            cell.layer.borderColor = UIColor.yellow.cgColor
-            cell.layer.borderWidth = 3.0
             return cell
             
         }
