@@ -18,6 +18,12 @@
 		8D57E0AF2268D27A004D9C16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0AD2268D27A004D9C16 /* LoginViewController.swift */; };
 		8D57E0B22268D39D004D9C16 /* SmartBoyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0B12268D39D004D9C16 /* SmartBoyViewController.swift */; };
 		8D57E0B32268D39D004D9C16 /* SmartBoyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0B12268D39D004D9C16 /* SmartBoyViewController.swift */; };
+		8D57E0B6226AB980004D9C16 /* SmartBoyFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0B5226AB980004D9C16 /* SmartBoyFeed.swift */; };
+		8D57E0B7226AB980004D9C16 /* SmartBoyFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0B5226AB980004D9C16 /* SmartBoyFeed.swift */; };
+		8D57E0BB226ABBED004D9C16 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0BA226ABBED004D9C16 /* Helpers.swift */; };
+		8D57E0BC226ABBED004D9C16 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0BA226ABBED004D9C16 /* Helpers.swift */; };
+		8D57E0BE226AC1F7004D9C16 /* SmartBoyFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0BD226AC1F7004D9C16 /* SmartBoyFeedCell.swift */; };
+		8D57E0BF226AC1F7004D9C16 /* SmartBoyFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0BD226AC1F7004D9C16 /* SmartBoyFeedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,9 @@
 		8D57E0A02268C95C004D9C16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D57E0AD2268D27A004D9C16 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8D57E0B12268D39D004D9C16 /* SmartBoyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartBoyViewController.swift; sourceTree = "<group>"; };
+		8D57E0B5226AB980004D9C16 /* SmartBoyFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartBoyFeed.swift; sourceTree = "<group>"; };
+		8D57E0BA226ABBED004D9C16 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		8D57E0BD226AC1F7004D9C16 /* SmartBoyFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartBoyFeedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +112,8 @@
 		8D57E07A2268C95B004D9C16 /* SmartBoy */ = {
 			isa = PBXGroup;
 			children = (
+				8D57E0B8226ABBD0004D9C16 /* Extensions */,
+				8D57E0B4226AB965004D9C16 /* CollectionViewCells */,
 				8D57E0B02268D2F3004D9C16 /* SmartBoyViewController */,
 				8D57E0AC2268CCF0004D9C16 /* Login */,
 				8D57E07B2268C95B004D9C16 /* AppDelegate.swift */,
@@ -147,6 +158,23 @@
 				8D57E0B12268D39D004D9C16 /* SmartBoyViewController.swift */,
 			);
 			path = SmartBoyViewController;
+			sourceTree = "<group>";
+		};
+		8D57E0B4226AB965004D9C16 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				8D57E0B5226AB980004D9C16 /* SmartBoyFeed.swift */,
+				8D57E0BD226AC1F7004D9C16 /* SmartBoyFeedCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		8D57E0B8226ABBD0004D9C16 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8D57E0BA226ABBED004D9C16 /* Helpers.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +309,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D57E0AE2268D27A004D9C16 /* LoginViewController.swift in Sources */,
+				8D57E0BB226ABBED004D9C16 /* Helpers.swift in Sources */,
+				8D57E0BE226AC1F7004D9C16 /* SmartBoyFeedCell.swift in Sources */,
 				8D57E0842268C95B004D9C16 /* SmartBoy.xcdatamodeld in Sources */,
+				8D57E0B6226AB980004D9C16 /* SmartBoyFeed.swift in Sources */,
 				8D57E07C2268C95B004D9C16 /* AppDelegate.swift in Sources */,
 				8D57E0B22268D39D004D9C16 /* SmartBoyViewController.swift in Sources */,
 			);
@@ -291,8 +322,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D57E0BF226AC1F7004D9C16 /* SmartBoyFeedCell.swift in Sources */,
 				8D57E0AF2268D27A004D9C16 /* LoginViewController.swift in Sources */,
 				8D57E0942268C95C004D9C16 /* SmartBoyTests.swift in Sources */,
+				8D57E0B7226AB980004D9C16 /* SmartBoyFeed.swift in Sources */,
+				8D57E0BC226ABBED004D9C16 /* Helpers.swift in Sources */,
 				8D57E0B32268D39D004D9C16 /* SmartBoyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

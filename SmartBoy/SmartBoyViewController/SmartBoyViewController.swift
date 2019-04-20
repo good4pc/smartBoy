@@ -8,82 +8,136 @@
 
 import UIKit
 enum Section: Int{
-    case stories =  0
+    case cameraView = 0
     case feed = 1
+    case chats = 2
 }
 
 class SmartBoyViewController: UIViewController {
 
-    fileprivate let cellIdentifier = "collectionViewCellIdentifier"
+    fileprivate let cellIdentifierForFeed = "collectionViewCellIdentifier"
     fileprivate let storiesCellIdentifier = "storiesCellIdentifier"
+    
+    var collectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = UIColor.gray
+        collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.bounces = false
+        return collectionView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+       
         self.view.addSubview(collectionView)
         collectionView.frame = self.view.frame
-        collectionView.backgroundColor = UIColor.gray
+       
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(SmartBoyCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+       
+        collectionView.register(SmartBoyFeed.self, forCellWithReuseIdentifier: cellIdentifierForFeed)
         collectionView.register(SmartBoyStoriesCell.self, forCellWithReuseIdentifier: storiesCellIdentifier)
+       //
+        
+        //MARK : scroll to the first section
+        collectionView.performBatchUpdates(nil) { (bool) in
+            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 1), at: .bottom, animated: true)
+        }
     }
 
 }
 
 extension SmartBoyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == Section.stories.rawValue {
-            return 1
-        }
-        else {
-            return 10
-        }
-        
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         switch indexPath.section {
-        case Section.stories.rawValue:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: storiesCellIdentifier, for: indexPath)
+        case Section.cameraView.rawValue:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath)
+            cell.layer.borderColor = UIColor.yellow.cgColor
+            cell.layer.borderWidth = 3.0
             return cell
+            
         case Section.feed.rawValue:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath) as! SmartBoyFeed
+            cell.layer.borderColor = UIColor.yellow.cgColor
+            cell.layer.borderWidth = 3.0
             return cell
+            
+        case Section.chats.rawValue:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath)
+            cell.layer.borderColor = UIColor.yellow.cgColor
+            cell.layer.borderWidth = 3.0
+            return cell
+            
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifierForFeed, for: indexPath)
+            cell.layer.borderColor = UIColor.yellow.cgColor
+            cell.layer.borderWidth = 3.0
             return cell
+            
         }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch indexPath.section {
-        case Section.stories.rawValue:
-            return CGSize(width: self.view.frame.width, height: 70)
-        case Section.feed.rawValue:
-           return CGSize(width: self.view.frame.width, height: 100)
-        default:
-            return CGSize(width: self.view.frame.width, height: 100)
-        }
-       
+        return CGSize(width: self.view.frame.width, height: self.view.frame.height)
     }
 }
 
-class SmartBoyCollectionViewCell: UICollectionViewCell {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = UIColor.gray
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
+/*extension SmartBoyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+ func numberOfSections(in collectionView: UICollectionView) -> Int {
+ return 2
+ }
+ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+ if section == Section.stories.rawValue {
+ return 1
+ }
+ else {
+ return 10
+ }
+ 
+ }
+ 
+ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+ switch indexPath.section {
+ case Section.stories.rawValue:
+ let cell = collectionView.dequeueReusableCell(withReuseIdentifier: storiesCellIdentifier, for: indexPath)
+ return cell
+ case Section.feed.rawValue:
+ let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+ return cell
+ default:
+ let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+ return cell
+ }
+ 
+ }
+ 
+ func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+ switch indexPath.section {
+ case Section.stories.rawValue:
+ return CGSize(width: self.view.frame.width, height: 70)
+ case Section.feed.rawValue:
+ return CGSize(width: self.view.frame.width, height: 100)
+ default:
+ return CGSize(width: self.view.frame.width, height: 100)
+ }
+ 
+ }
+ }
+ */
 
 class SmartBoyStoriesCellItems: UICollectionViewCell {
     override init(frame: CGRect) {
@@ -111,7 +165,7 @@ class SmartBoyStoriesCell: UICollectionViewCell {
         self.backgroundColor = UIColor.lightGray
         self.addSubview(collectionView)
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":collectionView]))
-          self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":collectionView]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[V0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0":collectionView]))
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SmartBoyStoriesCellItems.self, forCellWithReuseIdentifier: storiesCellIdentifier)
@@ -123,11 +177,11 @@ class SmartBoyStoriesCell: UICollectionViewCell {
 }
 
 extension SmartBoyStoriesCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-   
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      
-            return 10
-      
+        
+        return 10
+        
         
     }
     
@@ -139,6 +193,6 @@ extension SmartBoyStoriesCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: 50, height: 50)
-  
+        
     }
 }
