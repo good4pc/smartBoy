@@ -10,7 +10,7 @@ import UIKit
 
 fileprivate enum SectionHeight: CGFloat {
     case section1 = 50.0
-    case section3 = 50.001
+    case section3 = 70.001
     case section4 = 100.0
 }
 
@@ -56,7 +56,7 @@ class SmartBoyFeedCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-  
+    //MARK: - Section 1
     
     let section1: UIView = {
         
@@ -97,6 +97,9 @@ class SmartBoyFeedCell: UICollectionViewCell {
         
     }()
     
+    //MARK: - Section 2
+
+    
     let section2: UIView = {
         let feedImage: UIImageView = {
             let image = UIImageView()
@@ -121,29 +124,72 @@ class SmartBoyFeedCell: UICollectionViewCell {
         return view
     }()
     
-    let section4: UIView = {
-        let view = UIView()
-        //view.layer.addBorder(with: UIColor.black)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
     
+    
+    
+    //MARK: - Section 3
+
     let section3: UIView = {
         
         
         let view = UIView()
        //view.layer.addBorder(with: UIColor.green)
         view.translatesAutoresizingMaskIntoConstraints = false
+        //MARK:  * Like Button
+        
         //Like button
         let likeButton = UIButton()
         likeButton.translatesAutoresizingMaskIntoConstraints = false
         likeButton.setImage(UIImage(named: "like"), for: .normal)
         view.addSubview(likeButton)
+        
+        //MARK:  Likes label
+        
+        let likes = UILabel()
+        likes.translatesAutoresizingMaskIntoConstraints = false
+        likes.textColor = UIColor.lightGray
+        likes.text = "1005 likes"
+        likes.font = UIFont.systemFont(ofSize: 12)
+        view.addSubview(likes)
+        
+        //MARK: * Description
+        
+        let description = UILabel()
+        description.translatesAutoresizingMaskIntoConstraints = false
+        description.text = "Happy Vishu everyone"
+        description.textColor = .gray
+        description.font = UIFont.systemFont(ofSize: 12)
+        view.addSubview(description)
+        
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[V0]-10-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": description]))
+
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[likes(150)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["likes":likes]))
+        
+        
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[likeButton(30)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["likeButton":likeButton]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[likeButton(30)]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["likeButton":likeButton]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[likeButton(30)][likes][description]", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["likeButton":likeButton,"likes":likes,"description":description]))
         return view
     }()
     
+    //MARK: - Section 4
+    
+    let section4: UIView = {
+        let view = UIView()
+        //view.layer.addBorder(with: UIColor.black)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let chats = UILabel()
+        chats.translatesAutoresizingMaskIntoConstraints = false
+        chats.textColor = UIColor.lightGray
+        chats.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin lacus at erat posuere, vitae volutpat dolor porttitor. Integer vehicula dolor massa, ac auctor augue tristique eget. Aenean et fermentum magna, congue convallis arcu. Pellentesque urna felis, aliquam ut mollis et, tincidunt congue nisl. In malesuada elit ut tortor vestibulum elementum. Nulla leo odio, semper nec magna a, hendrerit luctus augue. Nulla eget pretium quam."
+        chats.numberOfLines = 0
+        chats.font = UIFont.systemFont(ofSize: 12)
+        view.addSubview(chats)
+        
+          view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-10-[V0]-10-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": chats]))
+          view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[V0]-10-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["V0": chats]))
+        return view
+    }()
     
 }
 

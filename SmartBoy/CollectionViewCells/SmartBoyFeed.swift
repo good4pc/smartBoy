@@ -50,12 +50,8 @@ class SmartBoyFeed: UICollectionViewCell {
     
     let navigationBar: UIView = {
         
-        
-        
         let view = UIView()
-        //view.layer.addBorder(with: UIColor.black)
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         let naviationTitleView = UIImageView()
         naviationTitleView.image = UIImage(named: "title")
         naviationTitleView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,7 +86,5 @@ extension SmartBoyFeed: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.contentView.frame.self.width, height: 500)
     }
-    
-    
 }
 
