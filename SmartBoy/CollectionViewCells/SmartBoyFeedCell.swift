@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 fileprivate enum SectionHeight: CGFloat {
     case section1 = 50.0
@@ -15,8 +16,27 @@ fileprivate enum SectionHeight: CGFloat {
 }
 
 class SmartBoyFeedCell: UICollectionViewCell {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    //var path: URL!
+    fileprivate var looper: AVPlayerLooper!
+    fileprivate var player: AVQueuePlayer?
+    
+    var path: URL? {
+        didSet {
+            if let url = path {
+                DispatchQueue.global(qos: .userInitiated).async {
+                    self.addQueuePlayer(with: url)
+                }
+            } else {
+                addFeedImage()
+            }
+        }
+    }
+    
+    func addPath(url: URL?) {
+        path = url
+    }
+    
+    fileprivate func addAllSections() {
         //Divide cell intp 4 sections now.
         //1.topHeader with user details
         //2.content view aka image or video
@@ -25,6 +45,7 @@ class SmartBoyFeedCell: UICollectionViewCell {
         
         //section 1:
         
+        
         self.addSubview(section1)
         self.addSubview(section2)
         self.addSubview(section3)
@@ -32,7 +53,8 @@ class SmartBoyFeedCell: UICollectionViewCell {
         
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[section1]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["section1":section1]))
         
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[section1(\(SectionHeight.section1.rawValue))][section2][section3(\(SectionHeight.section3.rawValue))][section4(\(SectionHeight.section4.rawValue))]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["section1":section1,
+        let heightOfFeed = ( self.frame.size.width * 1080 ) / 1920
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[section1(\(SectionHeight.section1.rawValue))][section2(\(heightOfFeed))][section3(\(SectionHeight.section3.rawValue))][section4]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["section1":section1,
                                                                                                                                                                                                                                                                                                             "section2":section2,"section4":section4,
                                                                                                                                                                                                                                                                                                             "section3":section3]))
         
@@ -44,11 +66,57 @@ class SmartBoyFeedCell: UICollectionViewCell {
         
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[section4]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["section4":section4]))
         
-//        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: [
-//                                                                                                                                                                                                                                    ]))
         
         section3.addUnderLine()
         section4.addUnderLine()
+    }
+    
+    fileprivate func addFeedImage() {
+        section2.addSubview(feedImage)
+        feedImage.contentMode = .scaleAspectFill
+        section2.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[feedImage]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["feedImage":feedImage]))
+        section2.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[feedImage]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["feedImage":feedImage]))
+    }
+    
+    func playVideo() {
+        if let player = player {
+            player.play()
+        }
+    }
+    
+    func stopPlayingVideo() {
+        if let player = player {
+            player.pause()
+        }
+    }
+    
+    fileprivate func addQueuePlayer(with url: URL) {
+
+       
+        player = AVQueuePlayer()
+        let avPlayerLayer = AVPlayerLayer()
+        avPlayerLayer.player = player
+        DispatchQueue.main.async {
+            self.section2.layer.addSublayer(avPlayerLayer)
+            avPlayerLayer.frame = self.section2.bounds
+        }
+        
+        let asset = AVURLAsset(url: url)
+        let item = AVPlayerItem(asset: asset)
+        
+        guard let player = player  else {
+            return
+        }
+        looper = AVPlayerLooper(player: player, templateItem: item)
+        player.insert(item, after: player.items().last)
+        player.volume = 0.0
+        player.play()
+        
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addAllSections()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,17 +124,22 @@ class SmartBoyFeedCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+   fileprivate let feedImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "vishu")
+        image.layer.masksToBounds = true
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
     //MARK: - Section 1
     
-    let section1: UIView = {
+   fileprivate let section1: UIView = {
         
         let profileThumbnail: UIImageView = {
             let image = UIImageView()
             image.image = UIImage(named: "thumbNail")
             image.translatesAutoresizingMaskIntoConstraints = false
             image.layer.cornerRadius = 15.0
-           // image.layer.borderWidth = 1.0
-          //  image.layer.borderColor = UIColor.darkGray.cgColor
             image.layer.masksToBounds = true
             return image
         }()
@@ -80,11 +153,8 @@ class SmartBoyFeedCell: UICollectionViewCell {
         }()
         
         let view = UIView()
-       // view.layer.addBorder(with: UIColor.brown)
         view.translatesAutoresizingMaskIntoConstraints = false
-        
-        //profile thumbnail
-        
+    
         view.addSubview(profileThumbnail)
         view.addSubview(userName)
         userName.font = UIFont.boldSystemFont(ofSize: 12.0)
@@ -99,41 +169,19 @@ class SmartBoyFeedCell: UICollectionViewCell {
     
     //MARK: - Section 2
 
-    
-    let section2: UIView = {
-        let feedImage: UIImageView = {
-            let image = UIImageView()
-            image.image = UIImage(named: "vishu")
-           // image.translatesAutoresizingMaskIntoConstraints = false
-           //image.layer.cornerRadius = 15.0
-           // image.layer.borderWidth = 1.0
-           // image.layer.borderColor = UIColor.darkGray.cgColor
-           image.layer.masksToBounds = true
-            image.translatesAutoresizingMaskIntoConstraints = false
-            return image
-        }()
+   fileprivate let section2: UIView = {
+     
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.orange
-        
-        view.addSubview(feedImage)
-        feedImage.contentMode = .scaleAspectFill
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[feedImage]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["feedImage":feedImage]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[feedImage]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["feedImage":feedImage]))
+    view.backgroundColor = UIColor.black
         return view
     }()
     
-    
-    
-    
-    //MARK: - Section 3
+  //MARK: - Section 3
 
-    let section3: UIView = {
-        
-        
-        let view = UIView()
-       //view.layer.addBorder(with: UIColor.green)
+   fileprivate let section3: UIView = {
+      let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         //MARK:  * Like Button
         
@@ -173,7 +221,7 @@ class SmartBoyFeedCell: UICollectionViewCell {
     
     //MARK: - Section 4
     
-    let section4: UIView = {
+   fileprivate let section4: UIView = {
         let view = UIView()
         //view.layer.addBorder(with: UIColor.black)
         view.translatesAutoresizingMaskIntoConstraints = false

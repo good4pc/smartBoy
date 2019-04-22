@@ -24,6 +24,14 @@
 		8D57E0BC226ABBED004D9C16 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0BA226ABBED004D9C16 /* Helpers.swift */; };
 		8D57E0BE226AC1F7004D9C16 /* SmartBoyFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0BD226AC1F7004D9C16 /* SmartBoyFeedCell.swift */; };
 		8D57E0BF226AC1F7004D9C16 /* SmartBoyFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D57E0BD226AC1F7004D9C16 /* SmartBoyFeedCell.swift */; };
+		8D57E0C2226B8DED004D9C16 /* IMG_4522.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8D57E0C1226B8DED004D9C16 /* IMG_4522.MOV */; };
+		8D57E0C3226B8DED004D9C16 /* IMG_4522.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8D57E0C1226B8DED004D9C16 /* IMG_4522.MOV */; };
+		8D57E0C5226BE0A9004D9C16 /* IMG_4526.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8D57E0C4226BE0A9004D9C16 /* IMG_4526.MOV */; };
+		8D57E0C6226BE0A9004D9C16 /* IMG_4526.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8D57E0C4226BE0A9004D9C16 /* IMG_4526.MOV */; };
+		8DFB4736226E1C6C00F6B560 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB4735226E1C6C00F6B560 /* ARViewController.swift */; };
+		8DFB4737226E1C6C00F6B560 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB4735226E1C6C00F6B560 /* ARViewController.swift */; };
+		8DFB4739226E1CA400F6B560 /* SmartBoyCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB4738226E1CA400F6B560 /* SmartBoyCameraView.swift */; };
+		8DFB473A226E1CA400F6B560 /* SmartBoyCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFB4738226E1CA400F6B560 /* SmartBoyCameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +70,10 @@
 		8D57E0B5226AB980004D9C16 /* SmartBoyFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartBoyFeed.swift; sourceTree = "<group>"; };
 		8D57E0BA226ABBED004D9C16 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8D57E0BD226AC1F7004D9C16 /* SmartBoyFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartBoyFeedCell.swift; sourceTree = "<group>"; };
+		8D57E0C1226B8DED004D9C16 /* IMG_4522.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_4522.MOV; sourceTree = "<group>"; };
+		8D57E0C4226BE0A9004D9C16 /* IMG_4526.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_4526.MOV; sourceTree = "<group>"; };
+		8DFB4735226E1C6C00F6B560 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		8DFB4738226E1CA400F6B560 /* SmartBoyCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartBoyCameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +124,7 @@
 		8D57E07A2268C95B004D9C16 /* SmartBoy */ = {
 			isa = PBXGroup;
 			children = (
+				8D57E0C0226B8DCC004D9C16 /* Video files */,
 				8D57E0B8226ABBD0004D9C16 /* Extensions */,
 				8D57E0B4226AB965004D9C16 /* CollectionViewCells */,
 				8D57E0B02268D2F3004D9C16 /* SmartBoyViewController */,
@@ -155,6 +168,8 @@
 		8D57E0B02268D2F3004D9C16 /* SmartBoyViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8DFB473B226E1D6900F6B560 /* Augmented Reality */,
+				8DFB4735226E1C6C00F6B560 /* ARViewController.swift */,
 				8D57E0B12268D39D004D9C16 /* SmartBoyViewController.swift */,
 			);
 			path = SmartBoyViewController;
@@ -165,6 +180,7 @@
 			children = (
 				8D57E0B5226AB980004D9C16 /* SmartBoyFeed.swift */,
 				8D57E0BD226AC1F7004D9C16 /* SmartBoyFeedCell.swift */,
+				8DFB4738226E1CA400F6B560 /* SmartBoyCameraView.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -175,6 +191,22 @@
 				8D57E0BA226ABBED004D9C16 /* Helpers.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8D57E0C0226B8DCC004D9C16 /* Video files */ = {
+			isa = PBXGroup;
+			children = (
+				8D57E0C1226B8DED004D9C16 /* IMG_4522.MOV */,
+				8D57E0C4226BE0A9004D9C16 /* IMG_4526.MOV */,
+			);
+			path = "Video files";
+			sourceTree = "<group>";
+		};
+		8DFB473B226E1D6900F6B560 /* Augmented Reality */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Augmented Reality";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +314,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D57E0892268C95C004D9C16 /* LaunchScreen.storyboard in Resources */,
+				8D57E0C2226B8DED004D9C16 /* IMG_4522.MOV in Resources */,
+				8D57E0C5226BE0A9004D9C16 /* IMG_4526.MOV in Resources */,
 				8D57E0862268C95C004D9C16 /* Assets.xcassets in Resources */,
 				8D57E0812268C95B004D9C16 /* Main.storyboard in Resources */,
 			);
@@ -291,6 +325,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D57E0C3226B8DED004D9C16 /* IMG_4522.MOV in Resources */,
+				8D57E0C6226BE0A9004D9C16 /* IMG_4526.MOV in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +347,8 @@
 				8D57E0AE2268D27A004D9C16 /* LoginViewController.swift in Sources */,
 				8D57E0BB226ABBED004D9C16 /* Helpers.swift in Sources */,
 				8D57E0BE226AC1F7004D9C16 /* SmartBoyFeedCell.swift in Sources */,
+				8DFB4739226E1CA400F6B560 /* SmartBoyCameraView.swift in Sources */,
+				8DFB4736226E1C6C00F6B560 /* ARViewController.swift in Sources */,
 				8D57E0842268C95B004D9C16 /* SmartBoy.xcdatamodeld in Sources */,
 				8D57E0B6226AB980004D9C16 /* SmartBoyFeed.swift in Sources */,
 				8D57E07C2268C95B004D9C16 /* AppDelegate.swift in Sources */,
@@ -322,10 +360,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DFB4737226E1C6C00F6B560 /* ARViewController.swift in Sources */,
 				8D57E0BF226AC1F7004D9C16 /* SmartBoyFeedCell.swift in Sources */,
 				8D57E0AF2268D27A004D9C16 /* LoginViewController.swift in Sources */,
 				8D57E0942268C95C004D9C16 /* SmartBoyTests.swift in Sources */,
 				8D57E0B7226AB980004D9C16 /* SmartBoyFeed.swift in Sources */,
+				8DFB473A226E1CA400F6B560 /* SmartBoyCameraView.swift in Sources */,
 				8D57E0BC226ABBED004D9C16 /* Helpers.swift in Sources */,
 				8D57E0B32268D39D004D9C16 /* SmartBoyViewController.swift in Sources */,
 			);
@@ -495,7 +535,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MQQCUAS3G;
 				INFOPLIST_FILE = SmartBoy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -512,7 +554,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MQQCUAS3G;
 				INFOPLIST_FILE = SmartBoy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
